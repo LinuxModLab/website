@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Projects | Linux Mod Lab"
+  description="Explore Linux Mod Lab's game-modding compatibility research, open-source development, and community projects."
+>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="label">RESEARCH & DEVELOPMENT</span>
+        <h1>Our Projects<span>.</span></h1>
+
+        <p>
+          Exploring compatibility challenges, developing open-source
+          solutions, and expanding what's possible for game modding
+          on Linux.
+        </p>
+      </div>
+
+      <article class="project-card">
+        <div class="project-top">
+          <span class="project-category">GAME COMPATIBILITY</span>
+          <span class="status">● ACTIVE RESEARCH</span>
+        </div>
+
+        <h3>GTA V Legacy / LSPDFR on Linux</h3>
+
+        <p>
+          Investigating compatibility between Grand Theft Auto V Legacy,
+          RAGE Plugin Hook, LSPDFR, Proton, Wine, and related modding
+          frameworks.
+        </p>
+
+        <p>
+          Current research includes plugin initialization, audio
+          compatibility, and stability under Linux compatibility layers.
+        </p>
+
+        <div class="project-tags">
+          <span>Gentoo</span>
+          <span>Proton</span>
+          <span>Wine</span>
+          <span>LSPDFR</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <style>
+    .section-heading p {
+      max-width: 760px;
+      color: #a9b6ae;
+      font-size: 18px;
+    }
+
+    .project-card p {
+      line-height: 1.8;
+    }
+  </style>
+</BaseLayout>
