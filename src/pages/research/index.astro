@@ -1,0 +1,65 @@
+
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const reports = (await getCollection("research")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout
+  title="Research | Linux Mod Lab"
+  description="Technical investigations, compatibility testing, and research findings from Linux Mod Lab."
+>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="label">RESEARCH & DEVELOPMENT</span>
+        <h1>Research Reports<span>.</span></h1>
+        <p>
+          Technical investigations, compatibility testing, and
+          documented findings from Linux Mod Lab.
+        </p>
+      </div>
+
+      {reports.map((report) => (
+        <article class="project-card research-listing">
+          <div class="project-top">
+            <span class="project-category">TECHNICAL RESEARCH</span>
+            <span class="status">{report.data.status.toUpperCase()}</span>
+          </div>
+
+          <h3>
+            <a href={`/research/${report.id}/`}>
+              {report.data.title}
+            </a>
+          </h3>
+
+          <p>{report.data.description}</p>
+
+          <div class="project-tags">
+            {report.data.tags.map((tag) => <span>{tag}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .research-listing {
+      margin-bottom: 25px;
+    }
+
+    .research-listing h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .research-listing h3 a:hover,
+    .research-listing h3 a:focus-visible {
+      color: #59e58c;
+      text-decoration: underline;
+    }
+  </style>
+</BaseLayout>

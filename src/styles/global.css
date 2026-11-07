@@ -148,6 +148,32 @@ a {
     border: 1px solid #29382f;
     border-radius: 10px;
   }
+  /* Research article typography */
+.research-article {
+  line-height: 1.7;
+}
+
+.research-article h2 {
+  font-size: 26px;
+  margin: 30px 0 12px;
+}
+
+.research-article h2:first-child {
+  margin-top: 0;
+}
+
+.research-article p,
+.research-article li {
+  color: #a9b6ae;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.research-article ul,
+.research-article ol {
+  padding-left: 24px;
+  margin: 12px 0 24px;
+}
 
   .project-top {
     display: flex;

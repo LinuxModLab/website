@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const reports = await getCollection("research");
+
+  return reports.map((report) => ({
+    params: { id: report.id },
+    props: { report },
+  }));
+}
+
+const { report } = Astro.props;
+const { Content } = await render(report);
+---
+
+<BaseLayout
+  title={`${report.data.title} | Linux Mod Lab`}
+  description={report.data.description}
+>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="label">LINUX MOD LAB RESEARCH</span>
+        <h1>{report.data.title}</h1>
+        <p>{report.data.description}</p>
+      </div>
+
+      <article class="project-card research-article">
+  <Content />
+</article>
+    </div>
+  </section>
+</BaseLayout>
