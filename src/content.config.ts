@@ -12,6 +12,7 @@ const research = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     status: z.enum(["active", "investigating", "resolved", "archived"]),
+    project: z.string(),
     tags: z.array(z.string()).default([]),
   }),
 });

@@ -1,5 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const researchReports = (await getCollection("research"))
+  .filter((report) => report.data.project === "gta-v-lspdfr")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <BaseLayout
@@ -24,7 +29,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         </div>
 
         <h2>Project Overview</h2>
-
         <p>
           This project investigates compatibility, plugin initialization,
           audio behavior, and runtime stability using Proton and Wine.
@@ -42,7 +46,32 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <span>Wine</span>
           <span>LSPDFR</span>
         </div>
-      </article>
+            </article>
+
+      {researchReports.length > 0 && (
+        <div class="research-section">
+          <h2>Research Reports</h2>
+
+          {researchReports.map((report) => (
+            <article class="project-card">
+              <div class="project-top">
+                <span class="project-category">TECHNICAL RESEARCH</span>
+                <span class="status">
+                  {report.data.status.toUpperCase()}
+                </span>
+              </div>
+
+              <h3>
+                <a href={`/research/${report.id}/`}>
+                  {report.data.title}
+                </a>
+              </h3>
+
+              <p>{report.data.description}</p>
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   </section>
 </BaseLayout>

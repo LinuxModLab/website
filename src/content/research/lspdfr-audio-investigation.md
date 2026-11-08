@@ -3,6 +3,7 @@ title: "LSPDFR Audio Compatibility Investigation"
 description: "Research into police radio audio behavior under Proton and Wine."
 date: 2026-11-07
 status: investigating
+project: gta-v-lspdfr
 tags:
   - LSPDFR
   - Proton
